@@ -1,14 +1,34 @@
 let gridCount = 16;
 let grid = document.querySelector("#grid-container");
+const controls = document.querySelector("#controls");
+
+/*
+Non functional reset button :)
+
+const resetBtn = document.createElement("button");
+resetBtn.classList.add("reset-button");
+resetBtn.textContent = "Reset";
+resetBtn.addEventListener("click", () => {
+  cell.className = "cell";
+});
+controls.appendChild(resetBtn); */
 
 function genDivs() {
-  for (let i = 0; i < gridCount; i++) {
+  for (
+    let horizontalIndex = 0;
+    horizontalIndex < gridCount;
+    horizontalIndex++
+  ) {
     let column = document.createElement("div");
-    column.classList.add("colum");
-    for (let x = 1; x <= gridCount; x++) {
+    column.classList.add("column");
+
+    for (let verticalIndex = 1; verticalIndex <= gridCount; verticalIndex++) {
       let cell = document.createElement("div");
-      cell.classList.add("square");
-      cell.textContent = `${i * gridCount + x}`;
+      cell.classList.add("cell");
+      //cell.textContent = `${horizontalIndex * gridCount + verticalIndex}`;
+      cell.addEventListener("mouseover", () => {
+        cell.className = "cell-hover";
+      });
       column.appendChild(cell);
     }
     grid.appendChild(column);
