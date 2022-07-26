@@ -3,17 +3,22 @@ let grid = document.querySelector("#grid-container");
 const controls = document.querySelector("#controls");
 
 const gridCountBtn = document.querySelector("#resize-btn");
-gridCountBtn.textContent = "Enter size";
-gridCountBtn.addEventListener("click", () => {
-  gridCount = +prompt("Enter size value");
-  //console.log(gridCountPrompt);
+gridCountBtn.textContent = "Resize ";
+gridCountBtn.addEventListener("click", userInput);
+
+function userInput() {
+  gridCount = Number(prompt("Enter size value"));
+  if (isNaN(gridCount) || gridCount < 16 || gridCount > 100) {
+    alert("Error: value must be a number between 16 and 100");
+    return;
+  }
   let child = grid.lastElementChild;
   while (child) {
     grid.removeChild(child);
     child = grid.lastElementChild;
   }
   genDivs();
-});
+}
 
 /*
 Non functional reset button :)
@@ -38,7 +43,7 @@ function genDivs() {
     for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
-      //cell.textContent = `${horizontalIndex * gridCount + verticalIndex}`;
+      //cell.textContent = `${horizontalIndex * gridCount + verticalIndex + 1}`;
       cell.addEventListener("mouseover", () => {
         cell.className = "cell-painted";
       });
