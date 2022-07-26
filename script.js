@@ -6,10 +6,10 @@ const resetBtn = document.createElement("button");
 resetBtn.classList.add("reset-button");
 resetBtn.textContent = "Reset";
 resetBtn.addEventListener("click", () => {
-  let child = grid.lastElementChild;
-  while (child) {
-    grid.removeChild(child);
-    child = grid.lastElementChild;
+  let cell = grid.lastElementChild;
+  while (cell) {
+    grid.removeChild(cell);
+    cell = grid.lastElementChild;
   }
   genDivs();
 });
@@ -46,9 +46,8 @@ function genDivs() {
     for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
-      //cell.textContent = `${horizontalIndex * gridCount + verticalIndex + 1}`;
       cell.addEventListener("mouseover", () => {
-        cell.className = "cell-painted";
+        cell.classList.add("cell-painted");
       });
       column.appendChild(cell);
     }
