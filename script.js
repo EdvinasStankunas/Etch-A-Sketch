@@ -22,12 +22,12 @@ function genDivs() {
     let column = document.createElement("div");
     column.classList.add("column");
 
-    for (let verticalIndex = 1; verticalIndex <= gridCount; verticalIndex++) {
+    for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
       //cell.textContent = `${horizontalIndex * gridCount + verticalIndex}`;
       cell.addEventListener("mouseover", () => {
-        cell.className = "cell-hover";
+        cell.className = "cell-painted";
       });
       column.appendChild(cell);
     }
