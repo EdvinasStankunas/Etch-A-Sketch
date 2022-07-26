@@ -9,6 +9,7 @@ resetBtn.addEventListener("click", () => {
   let cell = grid.lastElementChild;
   while (cell) {
     grid.removeChild(cell);
+
     cell = grid.lastElementChild;
   }
   genDivs();
@@ -22,15 +23,19 @@ gridCountBtn.addEventListener("click", userInput);
 
 function userInput() {
   gridCount = Number(prompt("Enter size value"));
+
   if (isNaN(gridCount) || gridCount < 16 || gridCount > 100) {
     alert("Error: value must be a number between 16 and 100");
     return;
   }
+
   let child = grid.lastElementChild;
+
   while (child) {
     grid.removeChild(child);
     child = grid.lastElementChild;
   }
+
   genDivs();
 }
 
@@ -41,16 +46,21 @@ function genDivs() {
     horizontalIndex++
   ) {
     let column = document.createElement("div");
+
     column.classList.add("column");
 
     for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
       let cell = document.createElement("div");
+
       cell.classList.add("cell");
+
       cell.addEventListener("mouseover", () => {
         cell.classList.add("cell-painted");
       });
+
       column.appendChild(cell);
     }
+
     grid.appendChild(column);
   }
 }
