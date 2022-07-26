@@ -2,6 +2,20 @@ let gridCount = 16;
 let grid = document.querySelector("#grid-container");
 const controls = document.querySelector("#controls");
 
+const resetBtn = document.createElement("button");
+resetBtn.classList.add("reset-button");
+resetBtn.textContent = "Reset";
+resetBtn.addEventListener("click", () => {
+  let child = grid.lastElementChild;
+  while (child) {
+    grid.removeChild(child);
+    child = grid.lastElementChild;
+  }
+  genDivs();
+});
+
+controls.appendChild(resetBtn);
+
 const gridCountBtn = document.querySelector("#resize-btn");
 gridCountBtn.textContent = "Resize ";
 gridCountBtn.addEventListener("click", userInput);
@@ -19,17 +33,6 @@ function userInput() {
   }
   genDivs();
 }
-
-/*
-Non functional reset button :)
-
-const resetBtn = document.createElement("button");
-resetBtn.classList.add("reset-button");
-resetBtn.textContent = "Reset";
-resetBtn.addEventListener("click", () => {
-  cell.className = "cell";
-});
-controls.appendChild(resetBtn); */
 
 function genDivs() {
   for (
