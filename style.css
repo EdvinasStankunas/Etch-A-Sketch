@@ -13,12 +13,8 @@ body {
 }
 
 .cell {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.185);
   aspect-ratio: 1 / 1;
-}
-
-.cell-painted {
-  background-color: black;
 }
 
 .column {

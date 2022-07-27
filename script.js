@@ -2,6 +2,21 @@ let gridCount = 16;
 let grid = document.querySelector("#grid-container");
 const controls = document.querySelector("#controls");
 
+const rgbBtn = document.createElement("button");
+rgbBtn.classList.add("rgb-button");
+rgbBtn.textContent = "RAINBOW MODE!1!";
+rgbBtn.addEventListener("click", () => {
+  let child = grid.lastElementChild;
+
+  while (child) {
+    grid.removeChild(child);
+    child = grid.lastElementChild;
+  }
+  rgbDivs();
+});
+
+controls.appendChild(rgbBtn);
+
 const resetBtn = document.createElement("button");
 resetBtn.classList.add("reset-button");
 resetBtn.textContent = "Reset";
@@ -55,7 +70,7 @@ function genDivs() {
       cell.classList.add("cell");
 
       cell.addEventListener("mouseover", () => {
-        cell.classList.add("cell-painted");
+        cell.setAttribute("style", "background: black");
       });
 
       column.appendChild(cell);
@@ -64,4 +79,39 @@ function genDivs() {
     grid.appendChild(column);
   }
 }
+
+function rgbDivs() {
+  for (
+    let horizontalIndex = 0;
+    horizontalIndex < gridCount;
+    horizontalIndex++
+  ) {
+    let column = document.createElement("div");
+
+    column.classList.add("column");
+
+    for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
+      let cell = document.createElement("div");
+
+      cell.classList.add("cell");
+
+      cell.addEventListener("mouseover", () => {
+        const randomBetween = (min, max) =>
+          min + Math.floor(Math.random() * (max - min + 1));
+        const r = randomBetween(0, 255);
+        const g = randomBetween(0, 255);
+        const b = randomBetween(0, 255);
+        const rgb = `rgb(${r},${g},${b})`;
+
+        //cell.classList.add("cell-painted");
+        cell.setAttribute("style", `background: ${rgb}`);
+      });
+
+      column.appendChild(cell);
+    }
+
+    grid.appendChild(column);
+  }
+}
+
 genDivs();
