@@ -1,7 +1,7 @@
-* {
+/* {
   border: 2px solid red;
 }
-
+*/
 p {
   text-align: center;
   font-size: x-large;
@@ -15,6 +15,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap-reverse;
+  background-color: rgba(235, 174, 243, 0.185);
 }
 
 button {
@@ -48,6 +49,7 @@ button {
 
 .cell {
   border: 1px solid rgba(0, 0, 0, 0.185);
+  background-color: white;
   aspect-ratio: 1 / 1;
 }
 
