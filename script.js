@@ -10,6 +10,7 @@ rgbBtn.addEventListener("click", () => {
 
   while (child) {
     grid.removeChild(child);
+
     child = grid.lastElementChild;
   }
   rgbDivs();
@@ -37,7 +38,7 @@ gridCountBtn.textContent = "Resize ";
 gridCountBtn.addEventListener("click", userInput);
 
 function userInput() {
-  gridCount = Number(prompt("Enter size value"));
+  gridCount = Number(prompt("Enter size value between 16 and 100"));
 
   if (isNaN(gridCount) || gridCount < 16 || gridCount > 100) {
     alert("Error: value must be a number between 16 and 100");
@@ -103,7 +104,6 @@ function rgbDivs() {
         const b = randomBetween(0, 255);
         const rgb = `rgb(${r},${g},${b})`;
 
-        //cell.classList.add("cell-painted");
         cell.setAttribute("style", `background: ${rgb}`);
       });
 
