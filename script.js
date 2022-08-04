@@ -18,6 +18,22 @@ rgbBtn.addEventListener("click", () => {
 
 controls.appendChild(rgbBtn);
 
+const shadeBtn = document.createElement("button");
+shadeBtn.classList.add("shade-button");
+shadeBtn.textContent = "Shade mode";
+shadeBtn.addEventListener("click", () => {
+  let child = grid.lastElementChild;
+
+  while (child) {
+    grid.removeChild(child);
+
+    child = grid.lastElementChild;
+  }
+  shadeDivs();
+});
+
+controls.appendChild(shadeBtn);
+
 const resetBtn = document.createElement("button");
 resetBtn.classList.add("reset-button");
 resetBtn.textContent = "Reset";
@@ -110,6 +126,33 @@ function rgbDivs() {
       column.appendChild(cell);
     }
 
+    grid.appendChild(column);
+  }
+}
+
+function shadeDivs() {
+  for (
+    let horizontalIndex = 0;
+    horizontalIndex < gridCount;
+    horizontalIndex++
+  ) {
+    let column = document.createElement("div");
+
+    column.classList.add("column");
+
+    for (let verticalIndex = 0; verticalIndex < gridCount; verticalIndex++) {
+      let cell = document.createElement("div");
+      let shade = 0;
+
+      cell.classList.add("cell");
+      cell.addEventListener("mouseover", () => {
+        if (shade < 1) {
+          shade += 0.1;
+          cell.setAttribute("style", `background: rgba(0, 0, 0, ${shade})`);
+        }
+      });
+      column.appendChild(cell);
+    }
     grid.appendChild(column);
   }
 }
