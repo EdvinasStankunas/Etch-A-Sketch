@@ -147,7 +147,7 @@ function shadeDivs() {
       cell.classList.add("cell");
       cell.addEventListener("mouseover", () => {
         if (shade < 1) {
-          shade += 0.1;
+          shade = (shade * 10 + 1) / 10;
           cell.setAttribute("style", `background: rgba(0, 0, 0, ${shade})`);
         }
       });
